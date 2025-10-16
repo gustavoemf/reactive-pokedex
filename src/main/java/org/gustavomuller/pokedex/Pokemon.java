@@ -8,6 +8,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+/**
+ * Entity class for a Pokemon.
+ */
 @Entity
 public class Pokemon extends PanacheEntity {
     @Id
