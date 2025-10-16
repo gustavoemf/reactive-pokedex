@@ -5,6 +5,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import org.gustavomuller.pokedex.Pokemon;
 import org.gustavomuller.pokedex.service.PokemonService;
 
@@ -27,5 +28,11 @@ public class PokemonResource {
     @GET
     public Uni<List<Pokemon>> getAll() {
         return service.findAllPokemons();
+    }
+
+    @GET
+    @Path("/{id}")
+    public Uni<Pokemon> getPokemonById(@PathParam("id") Long id) {
+        return service.findPokemonById(id);
     }
 }
