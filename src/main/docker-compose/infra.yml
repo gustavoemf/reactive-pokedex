@@ -1,13 +1,15 @@
-pokemons-db:
-  image: postgres:latest
-  container_name: pokemons-db
-  ports:
-    - "5432"
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: root
-    POSTGRES_DB: pokemons_database
-  volumes:
-    - pokemon-db:/var/lib/postgresql/data
+services:
+  pokemons-db:
+    image: postgres:latest
+    container_name: pokemons-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: pokemons_database
+    volumes:
+      - pokemon-db:/var/lib/postgresql/data
+
 volumes:
   pokemon-db:
