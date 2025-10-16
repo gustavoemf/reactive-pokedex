@@ -4,6 +4,8 @@ import io.quarkus.logging.Log;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import org.gustavomuller.pokedex.Pokemon;
@@ -43,6 +45,16 @@ public class PokemonResource {
                 .replaceIfNullWith(() -> {
                     Log.debugf("No pokemon found with id %d", id);
                     return Response.status(Response.Status.NOT_FOUND).build();
+                });
+    }
+
+    @POST
+    @Consumes(APPLICATION_JSON)
+    public Uni<Response> createPokemon(@NotNull @Valid Pokemon pokemon) {
+        return service.persistPokemon(pokemon)
+                .onItem().ifNotNull().transform(p -> {
+                    Log.debugf("New pokemon created: %s", p);
+                    return Response.ok(p).build();
                 });
     }
 }
