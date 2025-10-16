@@ -1,6 +1,7 @@
 package org.gustavomuller.pokedex.service;
 
 import io.quarkus.logging.Log;
+import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.gustavomuller.pokedex.Pokemon;
@@ -15,6 +16,6 @@ public class PokemonService {
 
     public Uni<List<Pokemon>> findAllPokemons() {
         Log.debug("Getting all pokemons");
-        return Pokemon.listAll();
+        return Pokemon.listAll(Sort.by("name"));
     }
 }
