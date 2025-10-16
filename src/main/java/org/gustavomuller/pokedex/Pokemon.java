@@ -13,10 +13,6 @@ import jakarta.validation.constraints.Positive;
  */
 @Entity
 public class Pokemon extends PanacheEntity {
-    @Id
-    @GeneratedValue
-    public Long id;
-
     @NotBlank
     public String name;
 
