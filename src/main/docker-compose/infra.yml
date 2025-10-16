@@ -9,3 +9,5 @@ pokemons-db:
     POSTGRES_DB: pokemons_database
   volumes:
     - pokemon-db:/var/lib/postgresql/data
+volumes:
+  pokemon-db:
