@@ -8,6 +8,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import org.gustavomuller.pokedex.Pokemon;
 import org.gustavomuller.pokedex.repository.PokemonRepository;
+import org.gustavomuller.pokedex.service.PokemonService;
 
 import java.util.List;
 
@@ -15,15 +16,15 @@ import java.util.List;
 @ApplicationScoped
 public class PokemonResource {
 
-    private final PokemonRepository repository;
+    private final PokemonService service;
 
     @Inject
-    public PokemonResource(PokemonRepository repository) {
-        this.repository = new PokemonRepository();
+    public PokemonResource(PokemonService service) {
+        this.service = service;
     }
 
     @GET
     public Uni<List<Pokemon>> getAll() {
-        return repository.listAll(Sort.by("name"));
+        return service.findAllPokemons();
     }
 }
