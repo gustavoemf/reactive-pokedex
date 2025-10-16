@@ -3,6 +3,6 @@ package org.gustavomuller.pokedex;
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
 @QuarkusIntegrationTest
-class GreetingResourceIT extends GreetingResourceTest {
+class PokemonResourceIT extends PokemonResourceTest {
     // Execute the same tests but in packaged mode.
 }
