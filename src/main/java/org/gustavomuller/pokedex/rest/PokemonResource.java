@@ -2,8 +2,6 @@ package org.gustavomuller.pokedex.rest;
 
 import io.quarkus.logging.Log;
 import io.smallrye.mutiny.Uni;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
@@ -19,12 +17,11 @@ import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
  * API endpoints.
  */
 @Path("/api/pokemons")
-@ApplicationScoped
+@Produces(APPLICATION_JSON)
 public class PokemonResource {
 
     private final PokemonService service;
 
-    @Inject
     public PokemonResource(PokemonService service) {
         this.service = service;
     }
