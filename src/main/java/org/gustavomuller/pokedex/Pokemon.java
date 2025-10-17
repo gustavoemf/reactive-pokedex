@@ -1,6 +1,7 @@
 package org.gustavomuller.pokedex;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,13 +12,21 @@ import jakarta.validation.constraints.Positive;
  */
 @Entity
 public class Pokemon extends PanacheEntity {
-    @NotBlank
-    public String name;
 
     @NotBlank
-    public String type;
+    @Column(unique = true)
+    public String identifier;
 
     @NotNull
     @Positive
-    public Integer level;
+    public Integer pokedexNumber;
+
+    @NotBlank
+    public String type1;
+
+    public String type2;
+
+    @NotNull
+    @Positive
+    public Integer totalStats;
 }
