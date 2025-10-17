@@ -5,7 +5,7 @@ quarkus:
       schema-management:
         strategy: drop-and-create
   http:
-    port: 8083
+    port: 8080
     test-port: 0
   jackson:
     serialization-inclusion: non-empty

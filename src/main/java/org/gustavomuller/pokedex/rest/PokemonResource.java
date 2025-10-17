@@ -1,6 +1,7 @@
 package org.gustavomuller.pokedex.rest;
 
 import io.quarkus.logging.Log;
+import io.smallrye.common.annotation.NonBlocking;
 import io.smallrye.mutiny.Uni;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import org.gustavomuller.pokedex.service.PokemonService;
 import java.util.List;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
+import static jakarta.ws.rs.core.MediaType.TEXT_PLAIN;
 
 /**
  * API endpoints.
@@ -57,5 +59,14 @@ public class PokemonResource {
                     Log.debugf("New Pokemon created with URI %s", uri.toString());
                     return Response.created(uri).build();
                 });
+    }
+
+    @GET
+    @Path("/hello")
+    @Produces(TEXT_PLAIN)
+    @NonBlocking
+    public String hello() {
+        Log.debug("Hello Pokemon Resource");
+        return "Hello Pokemon Resource";
     }
 }
