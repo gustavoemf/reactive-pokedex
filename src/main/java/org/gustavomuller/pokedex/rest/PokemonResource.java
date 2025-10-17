@@ -33,7 +33,7 @@ public class PokemonResource {
     @GET
     public Uni<List<Pokemon>> getAll() {
         return service.findAllPokemons()
-                .invoke(pokemons -> Log.debugf("Total number of heroes: %d", pokemons.size()));
+                .invoke(pokemons -> Log.debugf("Total number of pokemons: %d", pokemons.size()));
     }
 
     @GET

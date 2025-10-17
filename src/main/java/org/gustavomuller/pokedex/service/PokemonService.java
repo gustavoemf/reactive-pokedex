@@ -19,7 +19,7 @@ public class PokemonService {
 
     public Uni<List<Pokemon>> findAllPokemons() {
         Log.debug("Getting all pokemons");
-        return Pokemon.listAll(Sort.by("name"));
+        return Pokemon.listAll(Sort.by("identifier"));
     }
 
     public Uni<Pokemon> findPokemonById(Long id) {

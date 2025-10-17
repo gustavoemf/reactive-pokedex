@@ -1,7 +1,7 @@
 package org.gustavomuller.pokedex.model;
 
 /**
- * Enum representing the different types of Pokemon
+ * Enum representing the different types of Pokemon.
  */
 public enum PokemonType {
     NORMAL,

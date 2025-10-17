@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 /**
- * Entity class for a Pokemon
+ * Entity class for a Pokemon.
  */
 @Entity
 public class Pokemon extends PanacheEntity {
