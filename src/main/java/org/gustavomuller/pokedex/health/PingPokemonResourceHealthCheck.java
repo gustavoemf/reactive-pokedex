@@ -5,6 +5,9 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Liveness;
 import org.gustavomuller.pokedex.rest.PokemonResource;
 
+/**
+ * HeathCheck to ping the Pokemon service
+ */
 @Liveness
 public record PingPokemonResourceHealthCheck(PokemonResource resource) implements HealthCheck {
 

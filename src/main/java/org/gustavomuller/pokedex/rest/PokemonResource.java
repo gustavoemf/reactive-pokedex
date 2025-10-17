@@ -9,7 +9,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
-import org.gustavomuller.pokedex.Pokemon;
+import org.gustavomuller.pokedex.model.Pokemon;
 import org.gustavomuller.pokedex.service.PokemonService;
 
 import java.util.List;

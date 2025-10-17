@@ -7,7 +7,7 @@ import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import org.gustavomuller.pokedex.Pokemon;
+import org.gustavomuller.pokedex.model.Pokemon;
 
 import java.util.List;
 

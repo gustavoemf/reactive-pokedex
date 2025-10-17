@@ -1,4 +1,4 @@
-package org.gustavomuller.pokedex;
+package org.gustavomuller.pokedex.model;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.Column;
@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 /**
- * Entity class for a Pokemon.
+ * Entity class for a Pokemon
  */
 @Entity
 public class Pokemon extends PanacheEntity {
