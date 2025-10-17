@@ -1,0 +1,18 @@
+quarkus:
+  application:
+    name: pokedex-reactive
+    hibernate-orm:
+      schema-management:
+        strategy: drop-and-create
+  http:
+    port: 8083
+    test-port: 0
+  jackson:
+    serialization-inclusion: non-empty
+
+"%dev,test":
+  quarkus:
+    log:
+      console:
+        format: "%d{HH:mm:ss} %-5p [%c{2.}] (%t) %s%e%n"
+        level: DEBUG
