@@ -5,7 +5,9 @@ import io.smallrye.mutiny.Uni;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
 import org.gustavomuller.pokedex.Pokemon;
 import org.gustavomuller.pokedex.service.PokemonService;
 
@@ -28,7 +30,8 @@ public class PokemonResource {
 
     @GET
     public Uni<List<Pokemon>> getAll() {
-        return service.findAllPokemons();
+        return service.findAllPokemons()
+                .invoke(pokemons -> Log.debugf("Total number of heroes: %d", pokemons.size()));
     }
 
     @GET
@@ -47,11 +50,12 @@ public class PokemonResource {
 
     @POST
     @Consumes(APPLICATION_JSON)
-    public Uni<Response> createPokemon(@NotNull @Valid Pokemon pokemon) {
+    public Uni<Response> createPokemon(@NotNull @Valid Pokemon pokemon, @Context UriInfo uriInfo) {
         return service.persistPokemon(pokemon)
-                .onItem().ifNotNull().transform(p -> {
-                    Log.debugf("New pokemon created: %s", p);
-                    return Response.ok(p).build();
+                .map(p -> {
+                    var uri = uriInfo.getAbsolutePathBuilder().path(p.id.toString()).build();
+                    Log.debugf("New Pokemon created with URI %s", uri.toString());
+                    return Response.created(uri).build();
                 });
     }
 }
